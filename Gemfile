@@ -20,6 +20,7 @@ end
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 gem "bcrypt-ruby", "~> 3.0.0"
+gem "squeel", ">= 1.1.1"
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
