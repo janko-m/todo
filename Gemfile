@@ -25,3 +25,13 @@ group :development do
   gem "better_errors", ">= 1.0.1"
   gem "binding_of_caller", ">= 0.7.2"
 end
+
+group :test do
+  gem "pry"
+  gem "rspec", ">= 2.14"
+  gem "factory_girl", ">= 4.2"
+  gem "capybara", ">= 2"
+  gem "cucumber-rails", ">= 1.4"
+  gem "database_cleaner", ">= 1.2"
+  gem "poltergeist", ">= 1.4.1"
+end
