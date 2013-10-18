@@ -16,6 +16,7 @@ end
 
 gem "bcrypt-ruby", "~> 3.1.2"
 gem "squeel", ">= 1.1.1"
+gem "inherited_resources", ">= 1.4.1"
 
 gem "haml", ">= 4"
 gem "haml-rails"

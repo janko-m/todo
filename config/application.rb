@@ -9,6 +9,7 @@ Bundler.require(:assets)
 
 require "simple_form"
 require "haml-rails"
+require "inherited_resources"
 
 if Rails.env.development?
   require "pry-rails"
