@@ -6,4 +6,10 @@ module ApplicationHelper
       @title
     end
   end
+
+  def controls(&block)
+    content_tag :div, class: "control-group" do
+      content_tag :div, class: "controls", &block
+    end
+  end
 end

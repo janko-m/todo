@@ -1,0 +1,10 @@
+- title "Login"
+
+= simple_form_for @session, url: login_path, html: {class: "form-horizontal"} do |f|
+
+  = f.input :username
+  = f.input :password
+
+  = controls do
+    = submit_button "Login"
+    or #{link_to "register", register_path}.

@@ -1,0 +1,11 @@
+- title "Register"
+
+= simple_form_for @user, url: register_path, html: {class: "form-horizontal"} do |f|
+
+  = f.input :username
+  = f.input :password
+  = f.input :password_confirmation
+
+  = controls do
+    = submit_button "Register"
+    = cancel_button "Back", login_path

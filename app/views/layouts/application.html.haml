@@ -15,10 +15,15 @@
           %li{class: ("active" if params[:action] == "api")}
             = link_to "API documentation", api_path
 
+        - if logged_in?
+          %p.navbar-text.pull-right
+            Logged in as <span class="text-info">#{current_user.username}</span>.
+
     .container
-      .hero-unit.text-center
-        %h1 A TODO app
-        %p You can manage tasks and shit.
+      - if logged_in?
+        .hero-unit.text-center
+          %h1 A TODO app
+          %p You can manage tasks and shit.
 
       = render "flash", flash: flash
 
