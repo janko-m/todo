@@ -2,7 +2,7 @@ ruby "2.0.0"
 
 source "https://rubygems.org"
 
-gem "rails", "~> 4.0"
+gem "rails", ">= 4.0.1.rc1"
 gem "pg"
 gem "thin"
 
@@ -13,7 +13,7 @@ group :assets do
   gem "jquery-rails"
 end
 
-gem "bcrypt-ruby", "~> 3.0.0"
+gem "bcrypt-ruby", "~> 3.1.2"
 gem "squeel", ">= 1.1.1"
 
 gem "haml", ">= 4"
