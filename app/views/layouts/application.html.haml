@@ -6,4 +6,20 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    = yield
+    .navbar
+      .navbar-inner
+        %span.brand TODO
+        %ul.nav
+          %li{class: ("active" if params[:action] != "api")}
+            = link_to "Website", root_path
+          %li{class: ("active" if params[:action] == "api")}
+            = link_to "API documentation", api_path
+
+    .container
+      .hero-unit.text-center
+        %h1 A TODO app
+        %p You can manage tasks and shit.
+
+      = render "flash", flash: flash
+
+      = yield
