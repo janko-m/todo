@@ -1,0 +1,1 @@
+Draper::CollectionDecorator.delegate :search

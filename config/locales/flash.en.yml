@@ -1,0 +1,9 @@
+en:
+  flash:
+    actions:
+      create:
+        success: null
+      update:
+        success: null
+      destroy:
+        success: null

@@ -1,0 +1,10 @@
+= simple_form_for @task do |f|
+
+  = f.input :content, class: "input-xlarge"
+  = f.input :due_date do
+    = f.text_field :due_date
+  = f.input :priority, collection: priorities.to_a.map(&:reverse), as: :radio_buttons
+
+  = controls do
+    = submit_button "Create task"
+    = cancel_button "Cancel", tasks_path

@@ -1,9 +1,17 @@
 Given(/^I'm registered$/) do
-  User.create!(
+  @user = User.create!(
     username: "janko",
     password: "secret",
     password_confirmation: "secret"
   )
+end
+
+Given(/^I'm logged in$/) do
+  steps "Given I'm registered"
+  visit login_path
+  fill_in "Username", with: "janko"
+  fill_in "Password", with: "secret"
+  click_on "Login"
 end
 
 When(/^I fill in the registration credentials$/) do

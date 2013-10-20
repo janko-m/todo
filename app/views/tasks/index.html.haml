@@ -1,0 +1,15 @@
+- title "Tasks"
+
+%p= abstract_button :a, "New task", new_task_path
+
+%table#tasks.table.table-bordered
+  %thead
+    %tr
+      %th
+      %th= "Content"
+      %th= sort_link @search, :due_date, "Due date"
+      %th= sort_link @search, :priority, "Priority"
+      %th
+
+  %tbody
+    = render @tasks

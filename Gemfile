@@ -14,16 +14,19 @@ group :assets do
   gem "bootstrap-sass-rails", "< 3"
   gem "turbolinks", ">= 1.3"
   gem "jquery-turbolinks", "~> 1.0"
+  gem "bootstrap-datepicker-rails"
 end
 
 gem "bcrypt-ruby", "~> 3.1.2"
 gem "squeel", ">= 1.1.1"
 gem "inherited_resources", ">= 1.4.1"
 gem "active_attr", ">= 0.8.2"
+gem "ransack", ">= 1"
 
 gem "haml", ">= 4"
 gem "haml-rails"
 gem "simple_form", ">= 3.0.0"
+gem "draper", ">= 1.2.1"
 
 group :development do
   gem "pry-rails", ">= 0.3.2"

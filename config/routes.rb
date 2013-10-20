@@ -12,6 +12,8 @@ Todo::Application.routes.draw do
     post "register", to: :create
   end
 
+  resources :tasks
+
   controller :static_pages do
     get "api"
   end
