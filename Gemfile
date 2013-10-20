@@ -12,6 +12,8 @@ group :assets do
   gem "coffee-rails", "~> 4.0.0"
   gem "jquery-rails"
   gem "bootstrap-sass-rails", "< 3"
+  gem "turbolinks", ">= 1.3"
+  gem "jquery-turbolinks", "~> 1.0"
 end
 
 gem "bcrypt-ruby", "~> 3.1.2"
