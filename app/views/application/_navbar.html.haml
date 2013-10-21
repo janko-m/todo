@@ -1,0 +1,12 @@
+.navbar
+  .navbar-inner
+    %span.brand TODO
+    %ul.nav
+      %li{class: ("active" if params[:action] != "api")}
+        = link_to "Website", root_path
+      %li{class: ("active" if params[:action] == "api")}
+        = link_to "API documentation", api_path
+
+    - if logged_in?
+      %p.navbar-text.pull-right
+        Logged in as <span class="text-info">#{current_user.username}</span>.

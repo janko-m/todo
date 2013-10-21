@@ -6,25 +6,10 @@
     = javascript_include_tag "application", :"data-turbolinks-track" => true
     = csrf_meta_tags
   %body
-    .navbar
-      .navbar-inner
-        %span.brand TODO
-        %ul.nav
-          %li{class: ("active" if params[:action] != "api")}
-            = link_to "Website", root_path
-          %li{class: ("active" if params[:action] == "api")}
-            = link_to "API documentation", api_path
-
-        - if logged_in?
-          %p.navbar-text.pull-right
-            Logged in as <span class="text-info">#{current_user.username}</span>.
+    = render "navbar"
 
     .container
-      - if logged_in?
-        .hero-unit.text-center
-          %h1 A TODO app
-          %p You can manage tasks and shit.
-
+      = render "hero_unit" if logged_in?
       = render "flash", flash: flash
 
       = yield
