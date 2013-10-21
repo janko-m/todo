@@ -4,7 +4,7 @@ class TasksController < InheritedResources::Base
 
   def index
     @search = collection.search(params[:q])
-    @tasks = @search.result.decorate
+    @tasks = @search.result.decorate if params[:q]
     @task = Task.new
     super
   end
@@ -24,7 +24,7 @@ class TasksController < InheritedResources::Base
   end
 
   def collection
-    @tasks ||= super.decorate
+    @tasks ||= super.ascending.decorate
   end
 
   def resource
