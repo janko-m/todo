@@ -1,8 +1,15 @@
 - title "Tasks"
 
-%p= abstract_button :a, "New task", new_task_path
+= render "form"
 
 %table#tasks.table.table-bordered
+  %colgroup
+    %col.col-1
+    %col.col-5
+    %col.col-3
+    %col.col-2
+    %col.col-1
+
   %thead
     %tr
       %th

@@ -1,9 +1,9 @@
 module TasksHelper
-  def priorities
+  def priorities(options = {})
     {
-      1 => content_tag(:span, "Low",    class: "label label-info"),
-      2 => content_tag(:span, "Medium", class: "label label-warning"),
-      3 => content_tag(:span, "High",   class: "label label-important"),
+      1 => content_tag(:span, "Low",    options.merge_class("label label-info")),
+      2 => content_tag(:span, "Medium", options.merge_class("label label-warning")),
+      3 => content_tag(:span, "High",   options.merge_class("label label-important")),
     }
   end
 end

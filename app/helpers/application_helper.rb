@@ -12,4 +12,12 @@ module ApplicationHelper
       content_tag :div, class: "controls", &block
     end
   end
+
+  def editable(content, options = {})
+    content_tag :span, content, options.merge_class!("editable")
+  end
+
+  def icon(name, options = {})
+    content_tag :i, "", options.merge_class!("icon-#{name}")
+  end
 end

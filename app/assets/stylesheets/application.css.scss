@@ -8,3 +8,16 @@
 .hero-unit {
   padding: 30px;
 }
+
+.editable {
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+    color: gray;
+  }
+}
+
+.editable ~ input {
+  display: none;
+}

@@ -1,7 +1,7 @@
 Given(/^I created a task$/) do
   @user.tasks.create!(
     content:  "Watch game of thrones",
-    due_date: Date.today,
+    due_date: "25 December 2013",
     priority: 3,
   )
   refresh
@@ -11,58 +11,91 @@ Given(/^I created some tasks$/) do
   @user.tasks.create! [
     {
       content:  "Watch game of thrones",
-      due_date: Date.today,
+      due_date: "25 December 2013",
       priority: 3,
     },
     {
       content:  "Study for college",
-      due_date: Date.today + 1.day,
+      due_date: "26 December 2013",
       priority: 1,
     },
   ]
   refresh
 end
 
-When(/^I fill in the new task$/) do
-  fill_in "Content",  with: "Watch game of thrones"
-  find_field("Due date").click; find(".datepicker .today").click
-  choose "Low"
+When(/^I fill in a new task$/) do
+  fill_in "task_content", with: "Watch game of thrones"
 end
 
 When(/^I mark it as completed$/) do
-  within(Task.find_by(content: "Watch game of thrones")) do
-    check "task_complete"
-  end
+  check "task_complete"
+end
+
+When(/^I click on the content$/) do
+  find("span", text: "Watch game of thrones").click
+end
+
+When(/^I type in another content$/) do
+  within("#tasks") { fill_in "task_content", with: "Watch something else" }
+end
+
+When(/^I click on the due date$/) do
+  find("span", text: "25 December 2013").click
+end
+
+When(/^I select another date$/) do
+  all(".datepicker td", text: "26").last.click
+end
+
+When(/^I click on the priority$/) do
+  find("span", text: "High").click
+end
+
+When(/^I select another priority$/) do
+  find("span", text: "Low").click
 end
 
 Then(/^I should see my new task$/) do
-  expect(page).to have_content("Watch game of thrones")
+  expect(find("#tasks")).to have_content("Watch game of thrones")
 end
 
 Then(/^I should not see the task anymore$/) do
-  expect(page).not_to have_content("Watch game of thrones")
+  expect(find("#tasks")).to have_no_content("Watch game of thrones")
 end
 
 Then(/^the task should still be marked as completed$/) do
-  within(Task.find_by(content: "Watch game of thrones")) do
-    expect(find_field("task_complete")).to be_checked
-  end
+  expect(find_field("task_complete")).to be_checked
 end
 
 Then(/^I can sort them by due date$/) do
   click_on "Due date"
-  expect(all("tbody tr").first).to have_content("Watch game of thrones")
-  expect(all("tbody tr").last).to have_content("Study for college")
+  expect(tasks[0]).to have_content("Watch game of thrones")
+  expect(tasks[1]).to have_content("Study for college")
   click_on "Due date"
-  expect(all("tbody tr").first).to have_content("Study for college")
-  expect(all("tbody tr").last).to have_content("Watch game of thrones")
+  expect(tasks[0]).to have_content("Study for college")
+  expect(tasks[1]).to have_content("Watch game of thrones")
 end
 
 Then(/^I can sort them by priority$/) do
   click_on "Priority"
-  expect(all("tbody tr").first).to have_content("Study for college")
-  expect(all("tbody tr").last).to have_content("Watch game of thrones")
+  expect(tasks[0]).to have_content("Study for college")
+  expect(tasks[1]).to have_content("Watch game of thrones")
   click_on "Priority"
-  expect(all("tbody tr").first).to have_content("Watch game of thrones")
-  expect(all("tbody tr").last).to have_content("Study for college")
+  expect(tasks[0]).to have_content("Watch game of thrones")
+  expect(tasks[1]).to have_content("Study for college")
+end
+
+Then(/^the content should change$/) do
+  expect(find("#tasks")).to have_text("Watch something else")
+  expect(find("#tasks")).to have_no_field("task_content")
+end
+
+Then(/^the due date should change$/) do
+  expect(find("#tasks")).to have_text("26 December 2013")
+  expect(find("#tasks")).to have_no_field("task_due_date")
+end
+
+Then(/^the priority should change$/) do
+  expect(find("#tasks")).to have_text("Low")
+  expect(find("#tasks")).to have_no_text("High")
 end

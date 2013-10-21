@@ -5,9 +5,8 @@ Feature: Tasks
     Given I'm logged in
 
   Scenario: Adding tasks
-    When I click on "New task"
-      And I fill in the new task
-      And I click on "Create task"
+    When I fill in a new task
+    And I click on "Create task"
     Then I should see my new task
 
   Scenario: Removing tasks
@@ -25,3 +24,18 @@ Feature: Tasks
     Given I created some tasks
     Then I can sort them by due date
     And I can sort them by priority
+
+  Scenario: Editing
+    Given I created a task
+
+    When I click on the content
+    And I type in another content
+    Then the content should change
+
+    When I click on the due date
+    And I select another date
+    Then the due date should change
+
+    When I click on the priority
+    And I select another priority
+    Then the priority should change

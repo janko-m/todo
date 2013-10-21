@@ -10,3 +10,8 @@
 #= require_self
 #
 #= require_tree .
+
+$.extend true, $.fn.datepicker.defaults,
+  todayHighlight: true
+  autoclose: true
+  format: "dd MM yyyy"

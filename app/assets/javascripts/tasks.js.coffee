@@ -1,16 +1,27 @@
 jQuery ->
 
-  $("#tasks").on "click", "input[type='checkbox']", ->
-    form = $(@).closest("tr").find("form")
-    inputData = {}
-    inputData[$(@).attr("name")] = $(@)[0].checked
+  new InlineEditor("#tasks").enable()
+  new TaskUpdater("#tasks").listen()
 
-    $.ajax form.attr("action"),
+class TaskUpdater
+
+  constructor: (tasks) ->
+    @tasks = $(tasks)
+
+  listen: =>
+    @tasks.on "change", "input,textarea,select", (event) =>
+      input = $(event.target)
+      url = input.closest("tr").find("form").attr("action")
+
+      data = {}
+      switch input.attr("type")
+        when "checkbox" then data[input.attr("name")] = input[0].checked
+        else                 data[input.attr("name")] = input.val()
+
+      @updateTask(url, data)
+
+  updateTask: (url, data) =>
+    $.ajax url,
       type: "PUT"
-      data: inputData
+      data: data
       dataType: "script"
-
-  $("#task_due_date").datepicker
-    todayHighlight: true
-    autoclose: true
-    format: "dd/mm/yyyy"
