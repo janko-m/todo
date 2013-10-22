@@ -11,3 +11,7 @@
       %p.navbar-text.pull-right
         Logged in as <span class="text-success">#{current_user.username}</span>.
         #{link_to "Logout", logout_path, method: :delete}
+
+    - elsif params[:controller] == "static_pages"
+      %p.navbar-text.pull-right
+        = link_to "Login", login_path

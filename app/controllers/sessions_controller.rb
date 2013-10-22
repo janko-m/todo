@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
 
   def create
     @session = Session.new(params[:session])
-    user = AuthenticationService.new(@session).authenticate!
+    user = AuthenticationService.authenticate_from_session(@session)
 
     if user
       log_in!(user)

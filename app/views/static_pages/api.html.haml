@@ -1,0 +1,127 @@
+%section
+  :markdown
+
+    # Authentication
+
+    When using the API, you will need to authorize yourself before every request.
+
+    ```bash
+    $ curl  -H 'X-TODO-Token: <username>:<api_key>' \
+            http://todo.herokuapp.com/tasks.json
+    ```
+
+    #{api_key}
+
+%section
+  :markdown
+
+    # Tasks API
+
+    This section describes the API for managing your tasks.
+
+    ## List tasks
+
+    ```
+    GET /tasks.json
+    ```
+
+    ### Example
+
+    ```bash
+    $ curl  -H 'X-TODO-Token: <username>:<api_key>' \
+            http://todo.herokuapp.com/tasks.json
+    ```
+
+    ### Response
+
+    ```json
+    [
+      {
+        "id": 40,
+        "user_id": 1,
+        "content": "Watch Game of Thrones",
+        "priority": 3,
+        "due_date": "2013-10-26",
+        "complete": false,
+        "created_at": "2013-10-20T22:13:07.102Z",
+        "updated_at": "2013-10-21T21:26:00.108Z"
+      },
+      {
+        "id": 41,
+        "user_id": 1,
+        "content": "Study for college",
+        "priority": 1,
+        "due_date": "2013-10-25",
+        "complete": false,
+        "created_at": "2013-10-20T22:14:20.525Z",
+        "updated_at": "2013-10-21T21:25:52.403Z"
+      },
+    ]
+    ```
+
+    ## Create a task
+
+    ```
+    POST /tasks.json
+    ```
+
+    ### Example
+
+    ```bash
+    $ curl  -H 'X-TODO-Token: <username>:<api_key>' \
+            -X POST \
+            -d '<json>' \
+            http://todo.herokuapp.com/tasks.json
+    ```
+
+    ### Response
+
+    ```json
+    {
+      "id": 40,
+      "user_id": 1,
+      "content": "Watch Game of Thrones",
+      "priority": 3,
+      "due_date": "2013-10-26",
+      "complete": false,
+      "created_at": "2013-10-20T22:13:07.102Z",
+      "updated_at": "2013-10-21T21:26:00.108Z"
+    }
+    ```
+
+    ## Update a task
+
+    ```
+    PATCH /tasks/:id.json
+    ```
+
+    ### Example
+
+    ```bash
+    $ curl  -H 'X-TODO-Token: <username>:<api_key>' \
+            -X PATCH \
+            -d '<json>' \
+            http://todo.herokuapp.com/tasks/40.json
+    ```
+
+    ### Response
+
+    Responds with `200` if everything went well.
+
+    ## Delete a task
+
+    ```
+    DELETE /tasks/:id.json
+    ```
+
+    ### Example
+
+    ```bash
+    $ curl  -H 'X-TODO-Token: <username>:<api_key>' \
+            -X DELETE \
+            http://todo.herokuapp.com/tasks/40.json
+    ```
+
+    ### Response
+
+    Responds with `200` if everything went well.

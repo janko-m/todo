@@ -7,7 +7,7 @@ class RegistrationsController < ApplicationController
     @user = User.new(user_params)
 
     if @user.valid?
-      @user.save
+      RegistrationService.new(@user).save
       log_in!(@user)
       redirect_to root_path
     else

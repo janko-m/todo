@@ -6,7 +6,13 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate!
-    redirect_to login_path if not logged_in?
+    case params[:format]
+    when nil, "html", "js"
+      redirect_to login_path if not logged_in?
+    when "json"
+      @current_user = AuthenticationService.authenticate_from_headers(request.headers)
+      head :unauthorized if not logged_in?
+    end
   end
 
   def log_in!(user)
@@ -18,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    User.where(id: session[:user_id]).first
+    @current_user ||= User.where(id: session[:user_id]).first
   end
   helper_method :current_user
 

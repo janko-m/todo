@@ -27,6 +27,8 @@ gem "haml", ">= 4"
 gem "haml-rails"
 gem "simple_form", ">= 3.0.0"
 gem "draper", ">= 1.2.1"
+gem "redcarpet", ">= 3"
+gem "pygments.rb", ">= 0.5.2"
 
 group :development do
   gem "pry-rails", ">= 0.3.2"
@@ -37,7 +39,7 @@ end
 
 group :test do
   gem "pry"
-  gem "rspec", ">= 2.14"
+  gem "rspec-rails", ">= 2.14"
   gem "factory_girl", ">= 4.2"
   gem "capybara", ">= 2"
   gem "cucumber-rails", ">= 1.4"

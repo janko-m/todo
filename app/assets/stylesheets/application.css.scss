@@ -5,6 +5,24 @@
 //
 //= require_tree .
 
+section {
+  margin-bottom: 40px;
+}
+
+h1 {
+  padding-bottom: 9px;
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 30px;
+}
+
+h2 {
+  margin-top: 30px;
+}
+
+h2, h3, h4, h5, h6 {
+  color: lighten(black, 30%);
+}
+
 .hero-unit {
   padding: 30px;
 }
