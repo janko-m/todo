@@ -4,7 +4,6 @@ source "https://rubygems.org"
 
 gem "rails", ">= 4.0.1.rc1"
 gem "pg"
-gem "thin"
 
 group :assets do
   gem "sass-rails", "~> 4.0.0"
@@ -31,6 +30,7 @@ gem "redcarpet", ">= 3"
 gem "pygments.rb", ">= 0.5.2"
 
 group :development do
+  gem "thin"
   gem "pry-rails", ">= 0.3.2"
   gem "better_errors", ">= 1.0.1"
   gem "binding_of_caller", ">= 0.7.2"
@@ -45,4 +45,9 @@ group :test do
   gem "cucumber-rails", ">= 1.4"
   gem "database_cleaner", ">= 1.2"
   gem "poltergeist", ">= 1.4.1"
+end
+
+group :production do
+  gem "unicorn"
+  gem "rails_12factor" # For heroku
 end
