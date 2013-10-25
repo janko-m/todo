@@ -1,0 +1,10 @@
+<form class="in_place_editor" style="display:inline">
+  <% if @type == "string": %>
+    <input name="<%= @name %>" type="text" value="<%= @value %>" <%= @attrs %>>
+  <% else if @type == "date": %>
+    <input name="<%= @name %>" type="text" value="<%= @value %>" <%= @attrs %>>
+  <% else if @type in ["boolean", "select"]: %>
+    <% nextValue = @collection[(@collection.indexOf(@value) + 1) % @collection.length] unless @value == null %>
+    <input name="<%= @name %>" type="hidden" value="<%= nextValue || @collection[0] %>" <%= @attrs %>>
+  <% end %>
+</form>

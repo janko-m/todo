@@ -3,36 +3,18 @@
     float: none;
   }
 
-  input, label {
+  input {
     margin-bottom: 0;
   }
 
-  .dropdown {
-    & > span, li {
-      cursor: pointer;
-    }
-  }
-
-  .blank {
-    color: lighten(gray, 30%);
-  }
-
-  .dropdown ul {
-    padding-left: 5px;
-
-    input[type='radio'] {
-      display: none;
-    }
-  }
-
-  tr.task.complete {
-    .editable, .dropdown > span {
-      text-decoration: line-through;
-      opacity: 0.5;
-    }
-
-    .blank {
-      text-decoration: none;
+  .task.complete {
+    @for $n from 2 through 4 {
+      td:nth-child(#{$n}) {
+        .editable_in_place, .editable_in_place * {
+          text-decoration: line-through;
+          opacity: 0.5;
+        }
+      }
     }
   }
 }

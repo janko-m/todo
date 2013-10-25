@@ -14,6 +14,7 @@ group :assets do
   gem "turbolinks", ">= 1.3"
   gem "jquery-turbolinks", "~> 1.0"
   gem "bootstrap-datepicker-rails"
+  gem "eco", ">= 1"
 end
 
 gem "bcrypt-ruby", "~> 3.1.2"

@@ -1,2 +1,4 @@
-$("#tasks").append("<%= j render(@task.decorate) %>")
-$("#new_task").find("input[type='text']").val("")
+newTask = $("<%= j render(@task.decorate) %>")
+$("#tasks").append(newTask)
+newTask.trigger("add")
+$("#new_task").find("input[type='text']").val("").blur()

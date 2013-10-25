@@ -28,19 +28,19 @@ When(/^I fill in a new task$/) do
 end
 
 When(/^I mark it as completed$/) do
-  check "task_complete"
+  within(all("td")[0]) { find("[type='checkbox']").set(true) }
 end
 
 When(/^I click on the content$/) do
-  find("span", text: "Watch game of thrones").click
+  first("span", text: "Watch game of thrones").click
 end
 
 When(/^I type in another content$/) do
-  within("#tasks") { fill_in "task_content", with: "Watch something else" }
+  within(all("td")[1]) { find("[type='text']").set("Watch something else") }
 end
 
 When(/^I click on the due date$/) do
-  find("span", text: "25 December 2013").click
+  first("span", text: "25 December 2013").click
 end
 
 When(/^I select another date$/) do
@@ -48,11 +48,7 @@ When(/^I select another date$/) do
 end
 
 When(/^I click on the priority$/) do
-  find("span", text: "High").click
-end
-
-When(/^I select another priority$/) do
-  find("span", text: "Low").click
+  first("span", text: "High").click
 end
 
 Then(/^I should see my new task$/) do
@@ -64,7 +60,7 @@ Then(/^I should not see the task anymore$/) do
 end
 
 Then(/^the task should still be marked as completed$/) do
-  expect(find_field("task_complete")).to be_checked
+  expect(find("[type='checkbox']")).to be_checked
 end
 
 Then(/^I can sort them by due date$/) do

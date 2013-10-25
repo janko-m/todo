@@ -1,7 +1,6 @@
 = content_tag_for :tr, task, class: ("complete" if task.complete?) do
-  = simple_form_for task.object, html: {class: "form-inline"} do |f|
-    %td= task.complete(f)
-    %td= task.content(f)
-    %td= task.due_date(f)
-    %td= task.priority(f)
-    %td= link_to "×", task_path(task), method: :delete, remote: true, class: "close"
+  %td= task.complete
+  %td= task.content
+  %td= task.due_date
+  %td= task.priority
+  %td= link_to "×", task_path(task), method: :delete, remote: true, class: "close"

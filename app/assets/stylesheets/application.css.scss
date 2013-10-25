@@ -29,7 +29,7 @@ h2, h3, h4, h5, h6 {
   h1 { border-bottom: 0; }
 }
 
-.editable {
+.editable_in_place {
   cursor: pointer;
 
   &:hover {
@@ -38,6 +38,7 @@ h2, h3, h4, h5, h6 {
   }
 }
 
-.editable ~ input {
-  display: none;
+.blank {
+  color: lighten(gray, 30%);
+  text-decoration: none;
 }

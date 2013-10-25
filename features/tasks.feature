@@ -37,5 +37,4 @@ Feature: Tasks
     Then the due date should change
 
     When I click on the priority
-    And I select another priority
     Then the priority should change

@@ -9,7 +9,8 @@ module ButtonsHelper
 
   def abstract_button(tag_name, *args)
     options = args.extract_options!
-    args << options.merge_class!("btn")
+    options[:class] = "btn #{options[:class]}".strip
+    args << options
 
     case tag_name
     when :a

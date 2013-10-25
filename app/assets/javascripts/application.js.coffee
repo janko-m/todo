@@ -11,7 +11,11 @@
 #
 #= require_tree .
 
-$.extend true, $.fn.datepicker.defaults,
+$.extend $.fn.datepicker.defaults,
   todayHighlight: true
   autoclose: true
   format: "dd MM yyyy"
+
+jQuery ->
+
+  $(".editable_in_place").editableInPlace()

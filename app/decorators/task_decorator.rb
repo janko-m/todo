@@ -1,36 +1,26 @@
 class TaskDecorator < Draper::Decorator
   delegate_all
 
-  def complete(f)
-    f.input_field(:complete)
+  def complete
+    h.editable_in_place h.check_box_tag(nil, nil, object.complete),
+      object: object, column: :complete
   end
 
-  def content(f)
-    content = object.content? ? h.editable(object.content) : blank
-    content + f.text_field(:content)
+  def content
+    h.editable_in_place object.content,
+      object: object, column: :content
   end
 
-  def due_date(f)
-    content = object.due_date? ? h.editable(h.localize(object.due_date)) : blank
-    content + f.text_field(:due_date, value: (h.localize(object.due_date) if object.due_date?), data: {provide: "datepicker"})
+  def due_date
+    h.editable_in_place object.due_date && h.localize(object.due_date),
+      object: object, column: :due_date,
+      input_value: (object.due_date && h.localize(object.due_date)),
+      input_html: {:"data-provide" => "datepicker"}
   end
 
-  def priority(f)
-    h.content_tag :div, class: "dropdown" do
-      html = {data: {toggle: "dropdown"}, class: "dropdown-toggle"}
-      content = object.priority? ? h.priorities(html)[object.priority] : blank(html)
-      content + f.collection_radio_buttons(:priority, h.priorities.to_a, :first, :last,
-        collection_wrapper_tag: :ul, collection_wrapper_class: "dropdown-menu",
-        item_wrapper_tag: :li) do |b|
-          id = "task_priority_#{object.id}_#{h.cycle(*h.priorities.keys)}"
-          b.radio_button(id: id) + b.label(for: id)
-        end
-    end
-  end
-
-  private
-
-  def blank(options = {})
-    h.editable("Assign", options.merge_class!("blank"))
+  def priority
+    h.editable_in_place h.priorities[object.priority],
+      object: object, column: :priority,
+      type: :select, collection: h.priorities.keys
   end
 end
