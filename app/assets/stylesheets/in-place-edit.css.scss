@@ -1,0 +1,18 @@
+.editable_in-place {
+  cursor: pointer;
+
+  .text {
+    &:hover {
+      text-decoration: underline;
+      color: gray;
+    }
+  }
+
+  .blank {
+    color: lighten(gray, 30%);
+
+    &:hover {
+      color: lighten(gray, 15%);
+    }
+  }
+}

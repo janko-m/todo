@@ -36,10 +36,15 @@ module ApplicationHelper
       data_options[:collection] = [0, 1].to_json
     end
 
-    if text.present?
-      content_tag :span, text, class: "editable_in_place", data: data_options
-    else
-      content_tag :span, "Assign", class: "editable_in_place blank", data: data_options
-    end
+    text =
+      if text.present?
+        content_tag :span, text, class: "text"
+      else
+        content_tag :span, "Assign", class: "blank"
+      end
+
+    content_tag :span, text,
+      class: "editable_in-place",
+      data: data_options.merge(toggle: "in-place_editor")
   end
 end

@@ -1,4 +1,4 @@
-<form class="in_place_editor" style="display:inline">
+<form class="in-place_editor" style="display:inline">
   <% if @type == "string": %>
     <input name="<%= @name %>" type="text" value="<%= @value %>" <%= @attrs %>>
   <% else if @type == "date": %>

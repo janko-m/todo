@@ -10,9 +10,12 @@
   .task.complete {
     @for $n from 2 through 4 {
       td:nth-child(#{$n}) {
-        .editable_in_place, .editable_in_place * {
-          text-decoration: line-through;
+        .text, .blank {
           opacity: 0.5;
+        }
+
+        .text, .text .label {
+          text-decoration: line-through;
         }
       }
     }

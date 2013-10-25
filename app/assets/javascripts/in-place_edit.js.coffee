@@ -1,12 +1,10 @@
 #= require jquery
-#= require templates/in_place_editor
+#= require templates/in-place_editor
 
-$.fn.editableInPlace = ->
+jQuery ->
 
-  @.each (_, element) =>
-    editor = new InPlaceEditor($(element))
-    $(element).on "click", =>
-      editor.activate() unless editor.isActive()
+  $(document).on "click", "[data-toggle='in-place_editor']", ->
+    new InPlaceEditor($(@)).activate()
 
 class InPlaceEditor
 
@@ -14,13 +12,14 @@ class InPlaceEditor
     @options = @element.data()
 
   activate: =>
-    switch @options.type
-      when "string"            then new StringForm(@element).activate()
-      when "date"              then new DateForm(@element).activate()
-      when "boolean", "select" then new SelectForm(@element).activate()
+    unless @isActive()
+      switch @options.type
+        when "string"            then new StringForm(@element).activate()
+        when "date"              then new DateForm(@element).activate()
+        when "boolean", "select" then new SelectForm(@element).activate()
 
   isActive: =>
-    @element.closest("td").find(".in_place_editor").length != 0
+    @element.closest("td").find(".in-place_editor").length != 0
 
 class AbstractForm
 
@@ -41,7 +40,7 @@ class AbstractForm
     @element.html(@text)
 
   initialize: =>
-    @form = $(JST["templates/in_place_editor"](@options))
+    @form = $(JST["templates/in-place_editor"](@options))
       .on "submit", (event) => event.preventDefault()
 
   submit: =>

@@ -1,3 +1,1 @@
-var updatedTask = $("<%= j render(@task) %>")
-$("#task_<%= @task.id %>").replaceWith(updatedTask)
-updatedTask.trigger("update")
+$("#task_<%= @task.id %>").replaceWith("<%= j render(@task) %>")
