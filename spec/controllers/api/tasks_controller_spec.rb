@@ -1,10 +1,16 @@
 require "spec_helper"
 
-describe TasksController do
+describe Api::TasksController do
   let(:user) { FactoryGirl.create(:user) }
 
   before do
-    request.headers["X-TODO-Token"] = "#{user.username}:#{user.api_key}"
+    controller.stub(:current_user) { user }
+  end
+
+  it "authenticates before every request" do
+    controller.unstub(:current_user)
+    get :index, format: "json"
+    expect(response.status).to eq 401
   end
 
   describe "#index" do

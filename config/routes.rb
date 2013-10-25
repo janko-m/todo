@@ -17,4 +17,8 @@ Todo::Application.routes.draw do
   controller :static_pages do
     get "api"
   end
+
+  namespace :api do
+    resources :tasks
+  end
 end

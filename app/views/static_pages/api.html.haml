@@ -7,10 +7,13 @@
 
     ```bash
     $ curl  -H 'X-TODO-Token: <username>:<api_key>' \
-            http://todo.herokuapp.com/tasks.json
+            http://todo.herokuapp.com/api/tasks.json
     ```
 
     #{api_key}
+
+    All API requests are namespaced under `/api`. That means that `GET /tasks.json`
+    actually means `GET /api/tasks.json`.
 
 %section
   :markdown
@@ -29,7 +32,7 @@
 
     ```bash
     $ curl  -H 'X-TODO-Token: <username>:<api_key>' \
-            http://todo.herokuapp.com/tasks.json
+            http://todo.herokuapp.com/api/tasks.json
     ```
 
     ### Response
@@ -71,7 +74,7 @@
     $ curl  -H 'X-TODO-Token: <username>:<api_key>' \
             -X POST \
             -d '<json>' \
-            http://todo.herokuapp.com/tasks.json
+            http://todo.herokuapp.com/api/tasks.json
     ```
 
     ### Response
@@ -101,7 +104,7 @@
     $ curl  -H 'X-TODO-Token: <username>:<api_key>' \
             -X PATCH \
             -d '<json>' \
-            http://todo.herokuapp.com/tasks/40.json
+            http://todo.herokuapp.com/api/tasks/40.json
     ```
 
     ### Response
@@ -119,7 +122,7 @@
     ```bash
     $ curl  -H 'X-TODO-Token: <username>:<api_key>' \
             -X DELETE \
-            http://todo.herokuapp.com/tasks/40.json
+            http://todo.herokuapp.com/api/tasks/40.json
     ```
 
     ### Response

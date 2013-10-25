@@ -6,13 +6,7 @@ class ApplicationController < ActionController::Base
   private
 
   def authenticate!
-    case params[:format]
-    when nil, "html", "js"
-      redirect_to login_path if not logged_in?
-    when "json"
-      @current_user = AuthenticationService.authenticate_from_headers(request.headers)
-      head :unauthorized if not logged_in?
-    end
+    redirect_to login_path if not logged_in?
   end
 
   def log_in!(user)

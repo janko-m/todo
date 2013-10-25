@@ -1,13 +1,10 @@
 class TasksController < InheritedResources::Base
-  before_filter :authenticate!
-  respond_to :html, :js, :json
+  before_action :authenticate!
+  respond_to :html, :js
 
   def index
     @search = collection.search(params[:q])
-    if params[:q]
-      @tasks = @search.result
-      @tasks = @tasks.decorate if will_render_template?
-    end
+    @tasks = @search.result.decorate if params[:q]
     @task = Task.new
     super
   end
@@ -27,26 +24,14 @@ class TasksController < InheritedResources::Base
   end
 
   def collection
-    @tasks ||= begin
-      tasks = super.ascending
-      tasks = tasks.decorate if will_render_template?
-      tasks
-    end
+    @tasks ||= super.ascending.decorate
   end
 
   def resource
-    @task ||= begin
-      task = super
-      task = task.decorate if will_render_template?
-      task
-    end
+    @task ||= super.decorate
   end
 
   def permitted_params
-    params.permit!
-  end
-
-  def will_render_template?
-    params[:format].in? [nil, "html", "js"]
+    params.permit(task: [:complete, :content, :due_date, :priority])
   end
 end
