@@ -17,6 +17,7 @@ if Rails.env.development?
   require "pry-rails"
   require "better_errors"
   require "quiet_assets"
+  require "jasminerice"
 end
 
 module Todo

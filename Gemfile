@@ -30,6 +30,10 @@ gem "draper", ">= 1.2.1"
 gem "redcarpet", ">= 3"
 gem "pygments.rb", ">= 0.5.2"
 
+group :development, :test do
+  gem "jasminerice", github: "bradphelan/jasminerice"
+end
+
 group :development do
   gem "thin"
   gem "pry-rails", ">= 0.3.2"
