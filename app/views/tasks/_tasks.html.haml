@@ -1,0 +1,17 @@
+%colgroup
+  %col.col-1
+  %col.col-5
+  %col.col-3
+  %col.col-2
+  %col.col-1
+
+%thead
+  %tr
+    %th
+    %th= "Content"
+    %th= sort_link @search, :due_date, "Due date", {}, remote: true
+    %th= sort_link @search, :priority, "Priority", {}, remote: true
+    %th
+
+%tbody
+  = render @tasks

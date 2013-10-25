@@ -3,20 +3,4 @@
 = render "form"
 
 %table#tasks.table
-  %colgroup
-    %col.col-1
-    %col.col-5
-    %col.col-3
-    %col.col-2
-    %col.col-1
-
-  %thead
-    %tr
-      %th
-      %th= "Content"
-      %th= sort_link @search, :due_date, "Due date"
-      %th= sort_link @search, :priority, "Priority"
-      %th
-
-  %tbody
-    = render @tasks
+  = render "tasks"

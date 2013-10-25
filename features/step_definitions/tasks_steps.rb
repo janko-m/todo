@@ -65,18 +65,22 @@ end
 
 Then(/^I can sort them by due date$/) do
   click_on "Due date"
+  page.has_content?("Due date ▲")
   expect(tasks[0]).to have_content("Watch game of thrones")
   expect(tasks[1]).to have_content("Study for college")
   click_on "Due date"
+  page.has_content?("Due date ▼")
   expect(tasks[0]).to have_content("Study for college")
   expect(tasks[1]).to have_content("Watch game of thrones")
 end
 
 Then(/^I can sort them by priority$/) do
   click_on "Priority"
+  page.has_content?("Priority ▲")
   expect(tasks[0]).to have_content("Study for college")
   expect(tasks[1]).to have_content("Watch game of thrones")
   click_on "Priority"
+  page.has_content?("Priority ▼")
   expect(tasks[0]).to have_content("Watch game of thrones")
   expect(tasks[1]).to have_content("Study for college")
 end
