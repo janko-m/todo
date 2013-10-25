@@ -9,7 +9,9 @@
 #
 #= require_self
 #
-#= require_tree .
+#= require_directory .
+#
+#= require plugins/editable_in_place
 
 $.extend $.fn.datepicker.defaults,
   todayHighlight: true

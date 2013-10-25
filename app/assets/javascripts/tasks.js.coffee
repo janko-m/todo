@@ -1,4 +1,5 @@
-#= require ./plugins/editable_in_place
+#= require jquery
+#= require plugins/editable_in_place
 
 jQuery ->
 

@@ -1,4 +1,5 @@
-#= require ../templates/in_place_editor
+#= require jquery
+#= require templates/in_place_editor
 
 $.fn.editableInPlace = ->
 
