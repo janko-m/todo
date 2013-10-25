@@ -6,14 +6,13 @@ jQuery ->
   $(document).on "click", "[data-toggle='in-place_editor']", ->
     new InPlaceEditor($(@)).activate()
 
-class InPlaceEditor
+class @InPlaceEditor
 
   constructor: (@element) ->
-    @options = @element.data()
 
   activate: =>
     unless @isActive()
-      switch @options.type
+      switch @element.data("type")
         when "string"            then new StringForm(@element).activate()
         when "date"              then new DateForm(@element).activate()
         when "boolean", "select" then new SelectForm(@element).activate()
@@ -21,7 +20,7 @@ class InPlaceEditor
   isActive: =>
     @element.closest("td").find(".in-place_editor").length != 0
 
-class AbstractForm
+class @AbstractForm
 
   constructor: (@element) ->
     @options = @element.data()
@@ -49,7 +48,7 @@ class AbstractForm
       data: @form.serializeArray()
       dataType: "script"
 
-class StringForm extends AbstractForm
+class @StringForm extends AbstractForm
 
   activate: =>
     super
@@ -71,7 +70,7 @@ class StringForm extends AbstractForm
   focus: =>
     @form.find("[type='text']").focus()
 
-class DateForm extends AbstractForm
+class @DateForm extends AbstractForm
 
   activate: =>
     super
@@ -90,7 +89,7 @@ class DateForm extends AbstractForm
   focus: =>
     @form.find("[type='text']").focus()
 
-class SelectForm extends AbstractForm
+class @SelectForm extends AbstractForm
 
   activate: ->
     super
