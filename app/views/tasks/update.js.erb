@@ -1,1 +1,11 @@
-$("#task_<%= @task.id %>").replaceWith("<%= j render(@task) %>")
+var task = $("#task_<%= @task.id %>")
+
+<% if params[:task].has_key?(:complete) %>
+  task.hasClass("complete") ? task.removeClass("complete") : task.addClass("complete")
+<% elsif params[:task].has_key?(:content) %>
+  task.find("[data-type='string']").replaceWith("<%= j @task.decorate.content %>")
+<% elsif params[:task].has_key?(:due_date) %>
+  task.find("[data-type='date']").replaceWith("<%= j @task.decorate.due_date %>")
+<% elsif params[:task].has_key?(:priority) %>
+  task.find("[data-type='select']").replaceWith("<%= j @task.decorate.priority %>")
+<% end %>
