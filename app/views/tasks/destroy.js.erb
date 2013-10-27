@@ -1,1 +1,2 @@
 $("#task_<%= @task.id %>").remove()
+if ($("#tasks tbody tr").length === 0) { $("#tasks").hide() }

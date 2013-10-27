@@ -1,2 +1,3 @@
-$("#tasks").append("<%= j render(@task.decorate) %>")
+$("#tasks").show()
+$("#tasks tbody").append("<%= j render(@task.decorate) %>")
 $("#new_task").find("input[type='text']").val("").blur()
