@@ -6,4 +6,5 @@
   = render "tasks"
 
 :coffee
+  $("#new_task input[type='text']").focus()
   $("#tasks").hide() if $("#tasks tbody tr").length == 0
